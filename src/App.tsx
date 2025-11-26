@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import WhatsAppSection from './components/WhatsAppSection';
-import NepalSection from './components/NepalSection';
-import Pricing from './components/Pricing';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -88,15 +85,15 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <Features />
-      <WhatsAppSection />
-      <NepalSection />
-      <Pricing />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

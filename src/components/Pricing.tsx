@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Pricing: React.FC = () => {
+  const navigate = useNavigate();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'semi-annual' | 'annual'>('monthly');
 
   const features = [
@@ -121,9 +123,9 @@ const Pricing: React.FC = () => {
           </ul>
         </div>
         <div className="pricing-cta">
-          <a href="#" className="btn btn-accent">
+          <button className="btn btn-accent" onClick={() => navigate('/signup')}>
             ७ दिन फ्री ट्रायल सुरु गर्नुहोस् →
-          </a>
+          </button>
           <p className="trial-note">कुनै क्रेडिट कार्ड आवश्यक छैन</p>
         </div>
       </div>

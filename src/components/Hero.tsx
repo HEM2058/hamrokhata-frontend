@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
   const [activeSlide, setActiveSlide] = useState(0);
 
   const dashboards = [
@@ -127,9 +129,9 @@ const Hero: React.FC = () => {
           बिक्रम संवत पात्रो र व्हाट्सएप रिमाइन्डर सहित।
         </p>
         <div className="hero-buttons">
-          <a href="#" className="btn btn-accent">
+          <button className="btn btn-accent" onClick={() => navigate('/signup')}>
             ७ दिन फ्री ट्रायल →
-          </a>
+          </button>
           <a href="#features" className="btn btn-outline">
             सुविधाहरू हेर्नुहोस्
           </a>
