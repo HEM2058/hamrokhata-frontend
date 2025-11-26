@@ -28,15 +28,30 @@ const App: React.FC = () => {
 
     document.addEventListener('click', handleClick);
 
-    // Navbar background on scroll
+    // Smart navbar auto-hide on scroll
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar') as HTMLElement;
+      const currentScrollY = window.scrollY;
+
       if (navbar) {
-        if (window.scrollY > 50) {
-          navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        // Add scrolled class for styling
+        if (currentScrollY > 50) {
+          navbar.classList.add('scrolled');
         } else {
-          navbar.style.boxShadow = 'none';
+          navbar.classList.remove('scrolled');
         }
+
+        // Hide on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down & past threshold - hide navbar
+          navbar.classList.add('navbar-hidden');
+        } else {
+          // Scrolling up - show navbar
+          navbar.classList.remove('navbar-hidden');
+        }
+
+        lastScrollY = currentScrollY;
       }
     };
 
